@@ -1,22 +1,28 @@
 [
   {
     "id": "1",
-    "name": "Cases",
+    "name": "src",
     "type": "folder",
     "children": [
       {
         "id": "2",
-        "name": "2023",
+        "name": "components",
         "type": "folder",
         "children": [
           {
             "id": "3",
-            "name": "contract.pdf",
+            "name": "TreeNode.jsx",
             "type": "file",
-            "size": "2MB"
+            "size": "1.2 KB"
           }
         ]
       }
     ]
+  },
+  {
+    "id": "4",
+    "name": "package.json",
+    "type": "file",
+    "size": "2 KB"
   }
 ]

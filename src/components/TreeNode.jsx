@@ -1,8 +1,7 @@
-import { usestate } from "react";
+import { useState } from "react";
 
 const TreeNode = ({ node, onSelect, level = 0 }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const isFolder = node.type === "folder";
 
   const handleClick = () => {
@@ -13,14 +12,27 @@ const TreeNode = ({ node, onSelect, level = 0 }) => {
     }
   };
 
-return ( 
-  <div>
-    <div onclick={handleClick} style={{cursor: "pointer", padding: "6px", borderRadius: "4px" }}> 
-      {isFolder ? (isOpen ? "folder" : "folder") : "file"}{node.name}
+  return (
+    <div style={{ marginLeft: level * 16 }}>
+      <div
+        onClick={handleClick}
+        style={{ cursor: "pointer", padding: "6px", borderRadius: "4px" }}
+      >
+        {isFolder ? (isOpen ? "📂 " : "📁 ") : "📄 "}
+        {node.name}
+      </div>
+      {isFolder &&
+        isOpen &&
+        node.children?.map((child) => (
+          <TreeNode
+            key={child.id}
+            node={child}
+            onSelect={onSelect}
+            level={level + 1}
+          />
+        ))}
     </div>
-    {isFolder && isOpen && node.children?.map((child) => (<TreeNode key={child.id} node={child} onselect={onSelect} level={level + 1}/>))}
-  </div>
-  );  
+  );
 };
 
 export default TreeNode;
